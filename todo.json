@@ -1,0 +1,14 @@
+[
+    {
+        "time": "Morning",
+        "to-do": ["Pray and Meditate", "Movement", "Check emails"]
+    },
+    {
+        "time": "Afternoon",
+        "to-do": ["Movement", "Code", "Do some engineering design"]
+    },
+    {
+        "time": "Evening",
+        "to-do": ["Code and follow Data Engineering roadmap", "Start on designing SQL database for online store"]
+    }
+]
