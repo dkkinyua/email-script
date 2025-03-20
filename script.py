@@ -86,4 +86,5 @@ def send_email(subject, receiver, sender, body, pwd, server):
 # print(SERVER)
 
 # Send the email
-send_email(subject=subject, receiver=RECEIVER, sender=SENDER, body=body, pwd=PWD, server=SERVER)
+if __name__ == "__main__":
+    send_email(subject=subject, receiver=RECEIVER, sender=SENDER, body=body, pwd=PWD, server=SERVER)
