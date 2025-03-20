@@ -5,6 +5,7 @@ This repository contains a Python script that sends emails at scheduled times. T
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
+- [Automation](#automation)
 - [File Descriptions](#file-descriptions)
 
 ## Installation
@@ -72,53 +73,37 @@ python test.py
 - **`test.py`**: 
   This script tests the connection to the Gmail SMTP server using the provided credentials. It verifies if the login is successful and handles authentication errors.
 
-## Automation.
-So as to automate this scripts and get them running at specified times, you need to schedule a cron job for Linux/Unix machines or Task Scheduler for Windows machines.
+## Automation
 
-1 **Linux/Unix Machines**
+To automate the execution of these scripts and have them run at specified times, you can use the Task Scheduler in Windows. Here's how to set it up:
 
-For Linux/Unix machines, we will use ```cron``` to schedule cron jobs to run our scripts at specified times.
+### Scheduling Tasks in Windows using Task Scheduler
 
-a. Install ```cron```.
-To install cron on your Linux machine, navigate to the command line and run:
+1. **Open Task Scheduler:**
+   - Press `Win + R` to open the Run dialog.
+   - Type `taskschd.msc` and press Enter. This will open the Task Scheduler.
 
-```bash
+2. **Create a New Task:**
+   - In the Task Scheduler, click on "Create Basic Task" in the right-hand Actions pane.
+   - Give your task a name (e.g., "Send Daily To-Do List") and a description, then click "Next."
 
-sudo apt update && sudo apt install cron
+3. **Set the Trigger:**
+   - Choose how often you want the task to run (Daily, Weekly, etc.) and click "Next."
+   - Set the start date and time (e.g., 7:30 AM for the daily to-do list) and click "Next."
 
-```
-b. Launch the crontab.
-To launch the crontab, run:
-```bash
+4. **Action to Perform:**
+   - Select "Start a program" and click "Next."
+   - In the "Program/script" field, enter the path to your Python executable (e.g., `C:\Path\To\Python\python.exe`).
+   - In the "Add arguments (optional)" field, enter the path to your script (e.g., `C:\Path\To\Your\Script\script.py`).
+   - Click "Next."
 
-crontab -e
+5. **Finish:**
+   - Review your settings and click "Finish" to create the task.
 
-```
+6. **Repeat for Other Scripts:**
+   - Repeat the above steps to create another task for the reminder script, setting it to run at 10:30 PM.
 
-c. Scheduling the cronjob.
-For this cronjob, I scheduled the script to be run at 7:30AM everyday for script.py and 10:30PM everday for reminder.py. Add the following lines of code into your crontab:
-```bash
-# Basic Syntax
-# minute hour dom month weekday command
-#   *     *    *   *      *     echo 'hello world' >> hello.txt
-
-30 7 * * * /usr/bin/python3 /mnt/c/Users/LENOVO/mymachine/mydocs/script.py
-30 22 * * * /usr/bin/python3 /mnt/c/Users/LENOVO/mymachine/mydocs/reminder.py
-
-```
-
-d. Start the cron service.
-To start the cron service and check its status, run:
-```bash
-
-sudo service cron start
-sudo service cron status
-
-```
-2. **Windows Machines**
-To schedule this job on your Windows machine, run ```Win + R``` and search for the Task Scheduler.
-
-## Note
+### Note
 Make sure to enable "Less secure app access" in your Google account settings to allow the script to send emails. Alternatively, consider using an App Password if you have 2-Step Verification enabled.
 
 ## License
