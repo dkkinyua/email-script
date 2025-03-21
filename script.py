@@ -15,6 +15,9 @@ RECEIVER = os.getenv('EMAIL_RECEIVER')
 
 subject = 'To-do list for today and Daily Bible Verse'
 
+script_path = os.path.dirname(os.path.abspath(__file__)) # Get the abs path of the script.py
+file_path = os.path.join(script_path, 'todo.json') # Join the script path and the todo.jsonto run this script from anywhere
+
 # Fetch the Bible verse from API
 url = 'https://beta.ourmanna.com/api/v1/get?format=json&order=daily'
 headers = {"accept": "application/json"}
@@ -25,7 +28,7 @@ bible_verse = bible_data["verse"]["details"]["text"]
 bible_chapter = bible_data["verse"]["details"]["reference"]
 
 # Load the to-do list from JSON file
-with open('todo.json', 'r') as f:
+with open(file_path, 'r') as f:
     todo_data = json.load(f)
 
 # Construct the HTML email body
