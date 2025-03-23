@@ -75,7 +75,31 @@ python test.py
 
 ## Automation
 
-To automate the execution of these scripts and have them run at specified times, you can use the Task Scheduler in Windows. Here's how to set it up:
+To automate the execution of these scripts and have them run at specified times, you can use cron on Unix-based systems. Here's how to set it up:
+
+### Scheduling Tasks in Unix using Cron
+
+1. **Open the Crontab:**
+   Open your terminal and type the following command to edit the crontab:
+   ```bash
+   crontab -e
+   ```
+
+2. **Add a New Cron Job:**
+   To schedule the daily to-do list script to run at 7:30 AM, add the following line to the crontab:
+   ```bash
+   30 7 * * * /usr/bin/python3 /path/to/your/script.py
+   ```
+   Replace `/usr/bin/python3` with the path to your Python executable and `/path/to/your/script.py` with the path to your script.
+
+3. **Schedule the Reminder Script:**
+   To schedule the reminder script to run at 10:30 PM, add the following line:
+   ```bash
+   30 22 * * * /usr/bin/python3 /path/to/your/reminder.py
+   ```
+
+4. **Save and Exit:**
+   Save the changes and exit the editor. The cron jobs will now run at the specified times.
 
 ### Scheduling Tasks in Windows using Task Scheduler
 
