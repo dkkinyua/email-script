@@ -16,7 +16,7 @@ RECEIVER = os.getenv('EMAIL_RECEIVER')
 subject = 'To-do list for today and Daily Bible Verse'
 
 script_path = os.path.dirname(os.path.abspath(__file__)) # Get the abs path of the script.py
-file_path = os.path.join(script_path, 'todo.json') # Join the script path and the todo.jsonto run this script from anywhere
+file_path = os.path.join(script_path, 'todo.json') # Join the script path and the todo.json to run this script from anywhere
 
 # Fetch the Bible verse from API
 url = 'https://beta.ourmanna.com/api/v1/get?format=json&order=daily'
@@ -51,7 +51,7 @@ body = """\
         <tr><th>Time</th><th>Tasks</th></tr>
 """
 
-# Append to-do tasks to the table
+
 for entry in todo_data:
     tasks = "<br>".join(entry['to-do'])
     body += f"<tr><td><b>{entry['time']}</b></td><td>{tasks}</td></tr>"
